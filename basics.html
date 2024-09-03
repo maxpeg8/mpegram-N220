@@ -46,10 +46,17 @@
       //Arithmetic
       document.getElementById("multi").innerHTML += " 3 x 2 = " + 3 * 2;
       document.getElementById("division").innerHTML += " 6 / 2 = " + 6 / 2;
-      document.getElementById("remainder").innerHTML += " 3 x 2 = " + 3 * 2;
-      document.getElementById("exponents").innerHTML += " 6 / 2 = " + 6 / 2;
-      document.getElementById("increment").innerHTML += " 3 x 2 = " + 3 * 2;
-      document.getElementById("decrement").innerHTML += " 6 / 2 = " + 6 / 2;
+      document.getElementById("remainder").innerHTML += " 4 % 3 = " + (4 % 3);
+      document.getElementById("exponents").innerHTML += " 2 ** 3 = " + 2 ** 3;
+      let incrementNumber = 2;
+      document.getElementById("increment").innerHTML +=
+        " 2++ = " + incrementNumber++;
+      document.getElementById("increment").innerHTML +=
+        "<br> ++2 = " + ++incrementNumber;
+      document.getElementById("decrement").innerHTML +=
+        " 4-- = " + incrementNumber--;
+      document.getElementById("decrement").innerHTML +=
+        "<br> --3 = " + --incrementNumber;
 
       //Assignment
 
