@@ -10,4 +10,4 @@
 
 ## N220 Repo - Homework
 
-This is my HW1 assignment with e text.html file
+This is my HW1 assignment with a text.html file
