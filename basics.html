@@ -39,7 +39,7 @@
       //base for elements: document.getElementById('').innerHTML +=
       //   const myName = "Max";
       let myName = "Max";
-      myName = "MaxPeg8";
+      myName = "Sting";
 
       console.log(myName);
 
@@ -59,8 +59,38 @@
         "<br> --3 = " + --incrementNumber;
 
       //Assignment
+      document.getElementById("notSign").innerHTML += " !5 = " + !5;
+      document.getElementById("notSign").innerHTML += "<br> !'' = " + !"";
+
+      let addToNum = 5;
+      addToNum += 2;
+      document.getElementById("addTo").innerHTML += " 5 += 2 = " + addToNum;
+
+      let addToString = "Max";
+      addToString += "Sting";
+      document.getElementById("addTo").innerHTML +=
+        "<br> 'Max' += ' Sting' = " + addToString;
+
+      let subToNum = 5;
+      subToNum -= 2;
+      document.getElementById("subTo").innerHTML += " 5 -= 2 = " + subToNum;
+
+      //   document.getElementById("subTo").innerHTML += "  = " + ;
+      //   document.getElementById("otherT").innerHTML += "  = " + ;
 
       //Comparison
+      document.getElementById("equal").innerHTML += " 3 == '3' = " + (3 == "3");
+      document.getElementById("equalVT").innerHTML +=
+        " 3 == '4' = " + (3 == "4");
+
+      document.getElementById("nEqual").innerHTML +=
+        " 3 != '3' = " + (3 != "3");
+      document.getElementById("nEqualVT").innerHTML +=
+        " 3 != '4' = " + (3 != "4");
+
+      document.getElementById("gThan").innerHTML += " 3 > 2 = " + (3 > 2);
+      document.getElementById("LThanOrEqual").innerHTML +=
+        " 3 < 2 = " + (3 < 2);
     </script>
   </body>
 </html>
