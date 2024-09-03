@@ -2,7 +2,7 @@
 
 #### Date: 9/10/2024
 
-#### Pages URL: https://maxpeg8.github.io/mpegram-N220/
+#### Pages URL: https://maxpeg8.github.io/mpegram-N220/homework2
 
 #### Github Link: https://github.com/maxpeg8/mpegram-N220
 
