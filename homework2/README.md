@@ -2,11 +2,11 @@
 
 #### Date: 9/10/2024
 
-#### Pages URL: https://maxpeg8.github.io/mpegram-N220/homework2/
+#### HW2 Folder URL: https://maxpeg8.github.io/mpegram-N220/homework2/
 
-#### Pages URL: https://maxpeg8.github.io/mpegram-N220/homework2/basics.html
+#### Basics Page URL: https://maxpeg8.github.io/mpegram-N220/homework2/basics.html
 
-#### Pages URL: https://maxpeg8.github.io/mpegram-N220/homework2/simpleCalculations.html
+#### Simple Calculations Page URL: https://maxpeg8.github.io/mpegram-N220/homework2/simpleCalculations.html
 
 #### Github Link: https://github.com/maxpeg8/mpegram-N220
 
