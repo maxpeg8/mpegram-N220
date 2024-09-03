@@ -6,6 +6,6 @@
 
 #### Github Link: https://github.com/maxpeg8/mpegram-N220
 
-## N220 Repo
+## N220 Repo - Homework 1
 
 This is my HW1 assignment with e text.html file
