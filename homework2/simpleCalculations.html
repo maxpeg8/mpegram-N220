@@ -41,8 +41,8 @@
                 <h3>Dating</h3>
                 <p>Larry takes two friends to the movie. If tickets cost $14.00, how much will Larry spend on tickets?</p>
                 <p id="ticketNum">Tickets: </p>
-                <p id="ticketCost">Cost: $</p>
-                <p id="ttCost">Total: $
+                <p id="ticketCost">Cost: </p>
+                <p id="ttCost">Total: 
                     <script>
                         var pizza = 4;
                         pizza;
@@ -61,14 +61,17 @@
                     <li>Sandals: $30</li>
                     <li>Shoes: $60</li>
                 </ul>
-                <p id="bank"></p>
+                <p id="bank">
+                    After Purchasing the outfit, my bank account balance is:
+                </p>
                 <p>You decide you want to add a jacket to complete the outfit.Using expressions, display whether you have enough funds to add the jacket. (True or False)</p>
-                <p id="addJacket"></p>
+                <p id="addJacket">Add Jacket: </p>
             </section>
             <section>
                 <h3>Pizza</h3>
                 <p>If Professor Rector bought 4 pizzas and she estimated each student would eat 2.5 pieces of pizza and each pizza had 8 slices, how many students could she feed? How many pieces of pizza would be left over for Professor Rector?</p>
-                <p id='profPizza'></p>
+                <p id='studPizza'>Students: </p>
+                <p id='profPizza'>Rector: </p>
             </section>
             <section class="clearfix">
                 <h3>Monty's Mega Bar</h3>
@@ -97,7 +100,45 @@
                     <li>Week 3: 256.63</li>
                     <li>Week 4: 178.22</li>
                 </ul>
-                <p id="tips"></p>
+                <p id="tips">Weekly tip average: </p>
+
+                 <script>
+                    console.log("I see you");
+
+                    //Dating
+                    document.getElementById("ticketNum").innerHTML += 3;
+                    document.getElementById("ticketCost").innerHTML += "$" + 14;
+                    document.getElementById("ttCost").innerHTML += "$" + 3 * 14;
+
+                    //Shopping
+                    let bankAccount = 235.87;
+                    let shirt = 35;
+                    let pants = 75;
+                    let shoes = 60;
+                    let jacket = 70;
+                    document.getElementById("bank").innerHTML += "$" + (bankAccount-shirt-pants-shoes);
+                    document.getElementById("addJacket").innerHTML += "" + (bank > jacket);
+
+                    //Pizza
+                    let pizzaSlices = 32;
+                    document.getElementById("studPizza").innerHTML += "" + Math.floor(pizzaSlices / 2.5);
+                    document.getElementById("profPizza").innerHTML += "" + pizzaSlices - (12 * 2.5);
+
+                    //Mega Bar
+                    let adultBuf = 12;
+                    let childBuf = 6;
+                    let drinks = 1.5;
+                    document.getElementById("Monty").innerHTML += "$" + (adultBuf *2 + childBuf * 1 + drinks * 3);
+
+                    //Tips
+                    let week1 = 202.45;
+                    let week2 = 134.97;
+                    let week3 = 256.63;
+                    let week4 = 178.22;
+                    document.getElementById("tips").innerHTML += "$" + (week1 + week2 + week3 + week4) / 4;
+
+
+                 </script>
 
         </body>
 
