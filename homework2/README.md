@@ -1,6 +1,6 @@
 #### Name: Max Pegram
 
-#### Date: 9/10/2024
+#### Date:9/10/2024
 
 #### HW2 Folder URL: https://maxpeg8.github.io/mpegram-N220/homework2/
 
