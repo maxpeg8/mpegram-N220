@@ -76,3 +76,8 @@ function addItem() {
   const newItem = prompt("Add Item:");
   console.log(newItem);
 }
+
+function returnValue(color) {
+  return color;
+}
+alert(returnValue("Indigo"));
