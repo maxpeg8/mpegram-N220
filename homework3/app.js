@@ -1,4 +1,8 @@
 // Homework javascript
+function calcInterest(principle, rate, time) {
+  const interest = principle(1 + rate * time);
+  document.querySelector("#grandTotal").innerHTML = interest;
+}
 
 // In Class work
 
