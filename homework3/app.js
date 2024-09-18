@@ -3,7 +3,7 @@ function calcInterest() {
   const principle = parseFloat(document.getElementById("principle").value);
   const rate = parseFloat(document.getElementById("rate").value);
   const time = parseFloat(document.getElementById("time").value);
-  const interestTotal = (principle * (rate / 100) * time).toFixed(2);
+  const interestTotal = principle * (rate / 100) * time;
   const totalResult = principle + interestTotal;
   console.log("principle", principle);
   console.log("rate", rate);
@@ -16,8 +16,8 @@ function calcInterest() {
     "% for " +
     time +
     " years, your total interest will be $" +
-    interestTotal +
+    interestTotal.toFixed(2) +
     " with a grand total of $" +
-    totalResult +
+    totalResult.toFixed(2) +
     ".";
 }
