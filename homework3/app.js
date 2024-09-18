@@ -7,7 +7,13 @@ function calcInterest(principle, rate, time) {
   console.log("rate", rate);
   console.log("time", time);
   document.querySelector("#grandTotal").innerHTML +=
-    "With a beginning principle of " + principle + " and with a growth rate of $" + rate + "for " + time + "% years, your total interest will be $" + ;
+    "With a beginning principle of " +
+    principle +
+    " and with a growth rate of $" +
+    rate +
+    "for " +
+    time +
+    "% years, your total interest will be $";
 }
 
 // In Class work
