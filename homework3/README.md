@@ -4,7 +4,7 @@
 
 #### HW3 Folder URL: https://maxpeg8.github.io/mpegram-N220/homework3/
 
-#### Functions Student Page URL: https://maxpeg8.github.io/mpegram-N220/homework3/functionsStudent.html
+#### Functions Student Page URL: https://maxpeg8.github.io/mpegram-N220/homework3/inclass/functionsStudent.html
 
 #### Interest Page URL: https://maxpeg8.github.io/mpegram-N220/homework3/interest.html
 
