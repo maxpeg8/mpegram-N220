@@ -1,3 +1,7 @@
+// Homework javascript
+
+// In Class work
+
 function simpleFunctionOne() {
   // Code here:
   document.getElementById("changeTxt").innerHTML =
