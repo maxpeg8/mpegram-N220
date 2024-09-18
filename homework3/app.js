@@ -4,7 +4,7 @@ function calcInterest() {
   const rate = parseFloat(document.getElementById("rate").value);
   const time = parseFloat(document.getElementById("time").value);
   const interestTotal = parseFloat(principle * (rate / 100) * time);
-  const totalResult = principle + interestTotal;
+  const totalResult = parseFloat(principle + interestTotal);
   console.log("principle", principle);
   console.log("rate", rate);
   console.log("time", time);
