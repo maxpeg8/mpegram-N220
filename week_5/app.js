@@ -55,5 +55,7 @@ console.log(String(100).includes("0"), 100);
 console.log(String(100).replace("0", "2"), 100);
 console.log(String(100).replaceAll("0", "2"), 100);
 console.log("1, 2, 3, 4".split("#"));
+console.log("   123   ");
+console.log("   123   ".trim());
 
 // String Object
