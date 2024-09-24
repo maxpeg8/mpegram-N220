@@ -4,7 +4,11 @@
 
 #### Week 5 Folder URL: https://maxpeg8.github.io/mpegram-N220/week5/
 
-#### Functions Student Page URL: https://maxpeg8.github.io/mpegram-N220/week5/decisionsLoops.html
+#### Decisions Loops Page URL: https://maxpeg8.github.io/mpegram-N220/week5/decisionsLoops.html
+
+#### BO Objects Page URL: https://maxpeg8.github.io/mpegram-N220/week5/BO_Objects.html
+
+#### Test Page URL: https://maxpeg8.github.io/mpegram-N220/week5/test.html
 
 #### Interest Page URL: https://maxpeg8.github.io/mpegram-N220/week5/interest.html
 
