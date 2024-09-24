@@ -4,32 +4,49 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Javascript: Built-In Objects</title>
-   <style>
-    div {background-color: lightgray; padding:1em; margin:2em; border:1px solid black;}
-   </style>
+    <style>
+      div {
+        background-color: lightgray;
+        padding: 1em;
+        margin: 2em;
+        border: 1px solid black;
+      }
+    </style>
   </head>
   <body>
-   <div>
+    <div>
       <h1>Coding Challenge</h1>
-      <p>Create an object that includes the following.  <i>Values are written in ()</i></p>
+      <p>
+        Create an object that includes the following.
+        <i>Values are written in ()</i>
+      </p>
       <ul>
         <li>Course Number (N220)</li>
         <li>Course Title (Introduction to Media Application Development)</li>
         <li>Total Seats (20)</li>
         <li>Enrolled (18)</li>
-        <li>Availability (calculation of enrolled students subtracted from total seats. Should result in true/false.)</li>
+        <li>
+          Availability (calculation of enrolled students subtracted from total
+          seats. Should result in true/false.)
+        </li>
       </ul>
-      <p>Print out whether there are seats available in the console: <i>N220 Open: true.</i></p>
-      <p>Two more students enrolled. Change the value and print the enrolled number in the console.</p>
+      <p>
+        Print out whether there are seats available in the console:
+        <i>N220 Open: true.</i>
+      </p>
+      <p>
+        Two more students enrolled. Change the value and print the enrolled
+        number in the console.
+      </p>
       <p>Print out whether there are seats available in the console again.</p>
-   </div>
+    </div>
     <h1>Built-In Objects</h1>
     <h2>Window/Browser Object</h2>
     <p id="hwDetails"></p>
     <input type="button" value="IUPUI" onclick="IUPUIWebsite()" />
     <input type="button" value="printPage" onclick="printPage()" />
     <p id="wpDetails"></p>
-    <hr/>
+    <hr />
     <h2>Document Object</h2>
     <p id="dpDetails"></p>
     <p id="domain"></p>
@@ -48,16 +65,17 @@
     <h2>Number Object</h2>
     <p id="fixed"></p>
     <p id="precise"></p>
-    <hr/>
+    <hr />
     <h2>Math Object</h2>
     <p id="pi"></p>
     <p id="round"></p>
     <p id="ceil"></p>
     <p id="floor"></p>
     <p id="random"></p>
-    <hr/>
+    <hr />
     <h2>Date Object</h2>
     <p>Add all the information through document.write.</p>
-    
+
+    <script src="app.js"></script>
   </body>
 </html>
