@@ -10,4 +10,4 @@
 
 ## N220 Repo - Midterm
 
-This is my Midterm folder with my Midterm assignment
+This is my Midterm folder with my Midterm project
