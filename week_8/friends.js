@@ -1,5 +1,5 @@
 // Reference variables
-const friendName = document.getElementById("friendName");
+const friendNameInputRef = document.getElementById("friendName");
 const friendsListRef = document.getElementById("friendsList");
 
 // Variable to track my friends
@@ -8,16 +8,16 @@ const myFriends = [];
 // Function for adding friend
 function addFriend() {
   // Get the name the user inputed
-  const nameValue = friendName.value;
+  const nameValue = friendNameInputRef.value;
   // Add friend to friends list array
   myFriends.push({ name: nameValue, color: "black" });
   // Add the name to the friends list
   showFriends();
   // Clear the input textbox
-  friendName.value = "";
+  friendNameInputRef.value = "";
 }
 
-function removeFriend(friendName) {
+function removeFriend(friendIndex) {
   //   // Use variable to track index of friend to remove
   //   let friendIndex;
   //   // Loop through current friends to find the friendName
@@ -40,8 +40,8 @@ function showFriends() {
     // Add the name to the friends list
     friendsListRef.innerHTML += `<li>
     <span style="color: ${friend.color}">${friend.name}</span>
-    <button onclick="removeFriend(${friend.name})">X</button>
-    <button onclick="moveFriend(${friend.name}, true)">&#8593;</button>
+    <button onclick="removeFriend(${friendIndex})">X</button>
+    <button onclick="moveFriend(${friendIndex}, true)">&#8593;</button>
     <button onclick="moveFriend(${friendIndex}, false)">&#8595;</button>
     <input 
         type="color" 
@@ -60,6 +60,8 @@ function changeFriendTextColor(friendIndex, inputRef) {
     name: friendName,
     color: inputRef.value,
   });
+
+  showFriends();
 }
 
 // Function to clear the list
@@ -69,20 +71,15 @@ function clearList() {
 }
 
 // Function to move friends rankings
-function moveFriend(friendName, isMovingUp) {
-  let friendIndex;
+function moveFriend(friendIndex, isMovingUp) {
+  // let friendIndex;
   let friendNewIndex;
-  for (let i = 0; i < myFriends.length; i++) {
-    if (myFriends[i].name === friendName) {
-      friendIndex = i;
-      if (isMovingUp) {
-        friendNewIndex = friendIndex - 1;
-      } else {
-        friendNewIndex = friendIndex + 1;
-      }
-    }
+  if (isMovingUp) {
+    friendNewIndex = friendIndex - 1;
+  } else {
+    friendNewIndex = friendIndex + 1;
   }
-  //   const friendName
+  const friendName = myFriends[friendIndex].name;
   myFriends.splice(friendIndex, 1);
   myFriends.splice(friendNewIndex, 0, { name: friendName, color: "black" });
   showFriends();
