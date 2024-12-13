@@ -106,7 +106,7 @@ function showTasks() {
     taskListRef.innerHTML += `<div class="task"> <h id="taskTitle" onclick="markDone()"> <h id="taskNameText">${task.name}</h> (<h id="categoryText">Choose Category</h>)</h>
         </br>
         <button class="red" onclick="removeTask()">Remove</button>
-        <button class="blue" onclick="textChange()">Change Text</button>
+        <button class="blue" id=" onclick="textChange()">Change Text</button>
         <select id="chooseCategory" onchange="changeCategory()">
           <option>Choose Category</option>
           <option>Important</option>
@@ -138,18 +138,20 @@ function markDone() {
   }
 }
 
-// function markDone(taskIndex) {
-//   console.log(taskIndex + " hi");
-//   const taskName = allTasks[taskIndex].name;
-//   allTasks.splice(taskIndex, 1, {
-//     name: taskName,
-//   });
-// }
+function markDone(taskIndex) {
+  console.log(taskIndex + " hi");
+  const taskName = allTasks[taskIndex].name;
+  allTasks.splice(taskIndex, 1, {
+    name: taskName,
+  });
+}
 
-function textChange() {
+function textChange(e) {
   const taskNewName = prompt(`New Name: `);
-  const taskNameRef = document.getElementById("taskNameText");
-  taskNameRef.innerHTML = `${taskNewName}`;
+  taskNewName = e.currentTarget.dataset.text;
+  document.getElementById("");
+  //   const taskNameRef = document.getElementById("taskNameText");
+  //   taskNameRef.innerHTML = `${taskNewName}`;
 }
 
 function moveFriend(taskIndex, isMovingUp) {
