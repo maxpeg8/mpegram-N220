@@ -95,8 +95,11 @@ function changeCategory() {
 
 function markDone() {
   const taskTitleRef = document.getElementById("taskTitle");
-
-  taskTitleRef.style.textDecoration = "line-through";
+  if (taskTitleRef.style.textDecoration === "line-through") {
+    taskTitleRef.style.textDecoration = "none";
+  } else {
+    taskTitleRef.style.textDecoration = "line-through";
+  }
 }
 
 tasksContent();
