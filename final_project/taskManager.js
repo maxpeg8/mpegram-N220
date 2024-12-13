@@ -50,18 +50,31 @@ function login() {
   //   passwordInputRef.value = "";
 }
 
-loginContent();
+// loginContent();
 
 function tasksContent(usernameValue) {
   tasksPageRef.innerHTML = `<div class="dashboard">
         Welcome, ${myUsername}
         <button class="out" onclick="logout()">Logout</button>
-      </div>`;
+      </div>
+      <button onclick="addTask()">Add Task</button>
+      `;
   loginPageRef.innerHTML = "";
 }
+
+tasksContent();
 
 function logout() {
   myUsername.splice(0, myUsername.length);
   loginContent();
   //   console.log(myUsername);
+}
+
+function addTask() {
+  const newTasksPrompt = prompt(`New Task:`);
+  //   console.log(newTasksPrompt);
+  tasksPageRef.innerHTML += `<div class="task">
+  
+  </div>
+  `;
 }
