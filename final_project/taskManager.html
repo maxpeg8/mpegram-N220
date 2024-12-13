@@ -8,17 +8,8 @@
   </head>
   <body>
     <h1>Personal Task Manager</h1>
-    <section>
-      <div>
-        <label for="friendName">Username: </label>
-        <input type="text" name="friendName" id="friendName" />
-      </div>
-      <div>
-        <label for="friendName">Password: </label>
-        <input type="text" name="friendName" id="friendName" />
-      </div>
-      <button onclick="login()">Login</button>
-    </section>
+    <section id="loginPage"></section>
+    <section id="tasksPage"></section>
     <style>
       * {
         margin: 0;
@@ -52,6 +43,8 @@
 
       body > section {
         padding: 0 12px;
+        font-weight: bold;
+        font-size: 20px;
       }
 
       .task {
@@ -63,9 +56,12 @@
       }
 
       button {
-        padding: 4px;
+        margin-top: 8px;
+        padding: 6px;
         background-color: #4f414f;
         color: white;
+        font-size: 18px;
+        text-transform: uppercase;
       }
 
       button.red {
@@ -80,6 +76,6 @@
         text-decoration: line-through;
       }
     </style>
-    <script src="taskManager.html"></script>
+    <script src="taskManager.js"></script>
   </body>
 </html>
