@@ -59,6 +59,9 @@ function tasksContent(usernameValue) {
       </div>
       <button onclick="addTask()">Add Task</button>
       `;
+  tasksPageRef.innerHTML += `
+      <div id="taskList"></div>
+      `;
   loginPageRef.innerHTML = "";
 }
 
@@ -68,21 +71,54 @@ function logout() {
   //   console.log(myUsername);
 }
 
+const allTasks = [];
+
 function addTask() {
-  const newTasksPrompt = prompt(`New Task:`);
-  //   console.log(newTasksPrompt);
-  tasksPageRef.innerHTML += `<div class="task"> <h id="taskTitle" onclick="markDone()">
-  ${newTasksPrompt} (<h id="categoryText">Choose Priority</h>)</h>  
-  </br>
-  <button class="red" onclick="removeTask()">Remove</button>
-  <button class="blue" onclick="textChange()">Change Text</button>
-  <select id="chooseCategory" onchange="changeCategory()">
-    <option>Choose Category</option>
-    <option>Important</option>
-    <option>When Free</option>
-    </select>
-  </div>
-  `;
+  const newTasks = prompt(`New Task:`);
+  //   console.log(newTasks);
+  //   tasksPageRef.innerHTML += `<div class="task"> <h id="taskTitle" onclick="markDone()"> <h id="taskNameText">${newTasks}</h> (<h id="categoryText">Choose Category</h>)</h>
+  //       </br>
+  //       <button class="red" onclick="removeTask()">Remove</button>
+  //       <button class="blue" onclick="textChange()">Change Text</button>
+  //       <select id="chooseCategory" onchange="changeCategory()">
+  //         <option>Choose Category</option>
+  //         <option>Important</option>
+  //         <option>When Free</option>
+  //         </select>
+  //       </div>
+  //       `;
+
+  //   tasksPageRef.innerHTML += "";
+  //   console.log(newTasksRef);
+  allTasks.push({ name: newTasks });
+  showTasks();
+}
+
+function removeTask(taskIndex) {
+  allTasks.splice(taskIndex, 1);
+  showTasks();
+}
+
+function showTasks() {
+  const taskListRef = document.getElementById("taskList");
+  taskListRef.innerHTML = "";
+  allTasks.forEach(function (task, taskIndex) {
+    taskListRef.innerHTML += `<div class="task"> <h id="taskTitle" onclick="markDone()"> <h id="taskNameText">${task.name}</h> (<h id="categoryText">Choose Category</h>)</h>
+        </br>
+        <button class="red" onclick="removeTask()">Remove</button>
+        <button class="blue" onclick="textChange()">Change Text</button>
+        <select id="chooseCategory" onchange="changeCategory()">
+          <option>Choose Category</option>
+          <option>Important</option>
+          <option>When Free</option>
+          </select>
+        </div>
+        `;
+  });
+  //   tasksPageRef.innerHTML += "";
+  //   console.log(newTasksRef);
+
+  //   console.log(allTasks);
 }
 
 function changeCategory() {
@@ -102,10 +138,32 @@ function markDone() {
   }
 }
 
+// function markDone(taskIndex) {
+//   console.log(taskIndex + " hi");
+//   const taskName = allTasks[taskIndex].name;
+//   allTasks.splice(taskIndex, 1, {
+//     name: taskName,
+//   });
+// }
+
 function textChange() {
   const taskNewName = prompt(`New Name: `);
-  const taskTitleRef = document.getElementById("taskTitle");
-  taskTitleRef.innerHTML = `${taskNewName} (<h id="categoryText">Choose Priority</h>)`;
+  const taskNameRef = document.getElementById("taskNameText");
+  taskNameRef.innerHTML = `${taskNewName}`;
+}
+
+function moveFriend(taskIndex, isMovingUp) {
+  // let friendIndex;
+  let taskNewIndex;
+  if (isMovingUp) {
+    taskNewIndex = taskIndex - 1;
+  } else {
+    taskNewIndex = taskIndex + 1;
+  }
+  const taskName = allTasks[taskIndex].name;
+  allTasks.splice(taskIndex, 1);
+  allTasks.splice(taskNewIndex, 0, { name: taskName });
+  showTasks();
 }
 
 tasksContent();
