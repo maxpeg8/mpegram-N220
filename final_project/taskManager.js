@@ -75,7 +75,7 @@ function addTask() {
   ${newTasksPrompt} (<h id="categoryText">Choose Priority</h>)</h>  
   </br>
   <button class="red" onclick="removeTask()">Remove</button>
-  <button class="blue" onclick="changeText()">Change Text</button>
+  <button class="blue" onclick="textChange()">Change Text</button>
   <select id="chooseCategory" onchange="changeCategory()">
     <option>Choose Category</option>
     <option>Important</option>
@@ -100,6 +100,12 @@ function markDone() {
   } else {
     taskTitleRef.style.textDecoration = "line-through";
   }
+}
+
+function textChange() {
+  const taskNewName = prompt(`New Name: `);
+  const taskTitleRef = document.getElementById("taskTitle");
+  taskTitleRef.innerHTML = `${taskNewName} (<h id="categoryText">Choose Priority</h>)`;
 }
 
 tasksContent();
