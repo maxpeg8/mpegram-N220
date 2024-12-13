@@ -1,7 +1,11 @@
 console.log("hi");
 
+let myUsername = [];
+
+const loginPageRef = document.getElementById("loginPage");
+const tasksPageRef = document.getElementById("tasksPage");
+
 function loginContent() {
-  const loginPageRef = document.getElementById("loginPage");
   loginPageRef.innerHTML = `<div>
   <label for="username">Username: </label>
   <input type="text" name="username" id="username" />
@@ -11,6 +15,7 @@ function loginContent() {
   <input type="password" id="password" name="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number, one uppercase letter, and at least 8 characters" required />
   </div>
   <button onclick="login()">Login</button>`;
+  tasksPageRef.innerHTML = "";
 }
 
 function login() {
@@ -33,14 +38,30 @@ function login() {
   }
   let number1 = /[0-9]/g;
   if (passwordValue.match(number1)) {
+    myUsername.push(usernameValue);
+    tasksContent();
   } else {
     alert("Password must contain at least 1 number");
   }
-  console.log(usernameValue);
-  console.log(passwordValue);
-
+  //   console.log(usernameValue);
+  //   console.log(passwordValue);
+  //   console.log(myUsername);
   //   usernameInputRef.value = "";
   //   passwordInputRef.value = "";
 }
 
 loginContent();
+
+function tasksContent(usernameValue) {
+  tasksPageRef.innerHTML = `<div class="dashboard">
+        Welcome, ${myUsername}
+        <button class="out" onclick="logout()">Logout</button>
+      </div>`;
+  loginPageRef.innerHTML = "";
+}
+
+function logout() {
+  myUsername.splice(0, myUsername.length);
+  loginContent();
+  //   console.log(myUsername);
+}
