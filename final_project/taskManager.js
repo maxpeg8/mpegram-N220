@@ -62,8 +62,6 @@ function tasksContent(usernameValue) {
   loginPageRef.innerHTML = "";
 }
 
-tasksContent();
-
 function logout() {
   myUsername.splice(0, myUsername.length);
   loginContent();
@@ -74,7 +72,24 @@ function addTask() {
   const newTasksPrompt = prompt(`New Task:`);
   //   console.log(newTasksPrompt);
   tasksPageRef.innerHTML += `<div class="task">
-  
+  ${newTasksPrompt} (<h id="categoryText">Choose Priority</h>) </br>
+  <button class="red" onclick="removeTask()">Remove</button>
+  <button class="blue" onclick="changeText()">Change Text</button>
+  <select id="chooseCategory" onchange="changeCategory()">
+    <option>Choose Category</option>
+    <option>Important</option>
+    <option>When Free</option>
+    </select>
   </div>
   `;
 }
+
+function changeCategory() {
+  const category = document.getElementById("chooseCategory");
+  const categoryValue = category.value;
+  const categoryTextRef = document.getElementById("categoryText");
+  categoryTextRef.innerHTML = categoryValue;
+  //   console.log(categoryTextRef);
+}
+
+tasksContent();
