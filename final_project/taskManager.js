@@ -52,18 +52,26 @@ function login() {
 
 // loginContent();
 
+const dashboardRef = document.getElementById("dashboard");
+const tasklistRef = document.getElementById("tasklist");
+
 function tasksContent(usernameValue) {
-  tasksPageRef.innerHTML = `<div class="dashboard">
+  tasksPageRef.style.display = "initial";
+
+  dashboardRef.innerHTML = `
         Welcome, ${myUsername}
         <button class="out" onclick="logout()">Logout</button>
-      </div>
-      <button onclick="addTask()">Add Task</button>
-      `;
+        `;
+
   tasksPageRef.innerHTML += `
       <div id="taskList"></div>
       `;
   loginPageRef.innerHTML = "";
 }
+
+// function tasksContent() {
+//   tasksPageRef.style.display = "grid";
+// }
 
 function logout() {
   myUsername.splice(0, myUsername.length);
@@ -71,101 +79,116 @@ function logout() {
   //   console.log(myUsername);
 }
 
-const allTasks = [];
+// const allTasks = [];
+
+// function addTask() {
+//   const newTasks = prompt(`New Task:`);
+//   // const newTasksInputRef = document.getElementById("taskTitle");
+//   // const newTasksValue = newTasksInputRef.value;
+//   newTasksText
+//   console.log(newTasks);
+//   //   tasksPageRef.innerHTML += "";
+//   //   console.log(newTasksRef);
+//   allTasks.push({ name: newTasks });
+//   // console.log(allTasks[1]);
+//   showTasks();
+// }
 
 function addTask() {
   const newTasks = prompt(`New Task:`);
-  //   console.log(newTasks);
-  //   tasksPageRef.innerHTML += `<div class="task"> <h id="taskTitle" onclick="markDone()"> <h id="taskNameText">${newTasks}</h> (<h id="categoryText">Choose Category</h>)</h>
-  //       </br>
-  //       <button class="red" onclick="removeTask()">Remove</button>
-  //       <button class="blue" onclick="textChange()">Change Text</button>
-  //       <select id="chooseCategory" onchange="changeCategory()">
-  //         <option>Choose Category</option>
-  //         <option>Important</option>
-  //         <option>When Free</option>
-  //         </select>
-  //       </div>
-  //       `;
-
-  //   tasksPageRef.innerHTML += "";
-  //   console.log(newTasksRef);
-  allTasks.push({ name: newTasks });
-  showTasks();
+  const newTaskDiv = document.createElement("div");
+  newTaskDiv.classList.add("task");
+  newTaskDiv.innerHTML = newTasks;
 }
 
-function removeTask(taskIndex) {
-  allTasks.splice(taskIndex, 1);
-  showTasks();
-}
+// function removeTask(taskName) {
+//   let taskIndex;
+//   for (let i = 0; i < allTasks.length; i++) {
+//     if (allTasks[i].name === taskName) {
+//       taskIndex = i;
+//     }
+//   }
 
-function showTasks() {
-  const taskListRef = document.getElementById("taskList");
-  taskListRef.innerHTML = "";
-  allTasks.forEach(function (task, taskIndex) {
-    taskListRef.innerHTML += `<div class="task"> <h id="taskTitle" onclick="markDone()"> <h id="taskNameText">${task.name}</h> (<h id="categoryText">Choose Category</h>)</h>
-        </br>
-        <button class="red" onclick="removeTask()">Remove</button>
-        <button class="blue" id=" onclick="textChange()">Change Text</button>
-        <select id="chooseCategory" onchange="changeCategory()">
-          <option>Choose Category</option>
-          <option>Important</option>
-          <option>When Free</option>
-          </select>
-        </div>
-        `;
-  });
-  //   tasksPageRef.innerHTML += "";
-  //   console.log(newTasksRef);
+//   allTasks.splice(taskIndex, 1);
+//   showTasks();
+// }
 
-  //   console.log(allTasks);
-}
+// function showTasks() {
+//   const taskListRef = document.getElementById("taskList");
+//   taskListRef.innerHTML = "";
+//   allTasks.forEach(function (task, taskIndex) {
+//     taskListRef.innerHTML += `<div class="task"> <h id="taskTitle" onclick="markDone(${taskIndex})"> <h id="taskNameText">${task.name}</h> (<h id="categoryText">Choose Category</h>)</h>
+//         </br>
+//         <button class="red" onclick="removeTask(${taskIndex})">Remove</button>
+//         <button class="blue" id=" onclick="textChange(${taskIndex})">Change Text</button>
+//         <select id="chooseCategory" onchange="changeCategory(${taskIndex})">
+//           <option>Choose Category</option>
+//           <option>Important</option>
+//           <option>When Free</option>
+//           </select>
+//         </div>
+//         `;
+//   });
+//   //   tasksPageRef.innerHTML += "";
+//   //   console.log(newTasksRef);
 
-function changeCategory() {
-  const category = document.getElementById("chooseCategory");
-  const categoryValue = category.value;
-  const categoryTextRef = document.getElementById("categoryText");
-  categoryTextRef.innerHTML = categoryValue;
-  //   console.log(categoryTextRef);
-}
+//   // console.log(allTasks);
+//   // console.log(taskNameText);
+// }
 
-function markDone() {
-  const taskTitleRef = document.getElementById("taskTitle");
-  if (taskTitleRef.style.textDecoration === "line-through") {
-    taskTitleRef.style.textDecoration = "none";
-  } else {
-    taskTitleRef.style.textDecoration = "line-through";
-  }
-}
+// function changeCategory() {
+//   const category = document.getElementById("chooseCategory");
+//   const categoryValue = category.value;
+//   const categoryTextRef = document.getElementById("categoryText");
+//   categoryTextRef.innerHTML = categoryValue;
+//   //   console.log(categoryTextRef);
+// }
 
-function markDone(taskIndex) {
-  console.log(taskIndex + " hi");
-  const taskName = allTasks[taskIndex].name;
-  allTasks.splice(taskIndex, 1, {
-    name: taskName,
-  });
-}
+// function markDone() {
+//   const taskTitleRef = document.getElementById("taskTitle");
+//   if (taskTitleRef.style.textDecoration === "line-through") {
+//     taskTitleRef.style.textDecoration = "none";
+//   } else {
+//     taskTitleRef.style.textDecoration = "line-through";
+//   }
+// }
 
-function textChange(e) {
-  const taskNewName = prompt(`New Name: `);
-  taskNewName = e.currentTarget.dataset.text;
-  document.getElementById("");
-  //   const taskNameRef = document.getElementById("taskNameText");
-  //   taskNameRef.innerHTML = `${taskNewName}`;
-}
+// function markDone(taskIndex) {
+//   const taskTitleRef = document.getElementById("taskTitle");
+//   if (taskTitleRef.style.textDecoration === "line-through") {
+//     taskTitleRef.style.textDecoration = "none";
+//   }
+// else {
+//   taskTitleRef.style.textDecoration = "line-through";
+// }
+// const taskName = allTasks[taskIndex].name;
+// console.log(taskName + " hi");
 
-function moveFriend(taskIndex, isMovingUp) {
-  // let friendIndex;
-  let taskNewIndex;
-  if (isMovingUp) {
-    taskNewIndex = taskIndex - 1;
-  } else {
-    taskNewIndex = taskIndex + 1;
-  }
-  const taskName = allTasks[taskIndex].name;
-  allTasks.splice(taskIndex, 1);
-  allTasks.splice(taskNewIndex, 0, { name: taskName });
-  showTasks();
-}
+// allTasks.splice(taskIndex, 1, {
+//   name: (taskName.style.textDecoration = "line-through"),
+// });
+// }
+
+// function textChange(e) {
+//   const taskNewName = prompt(`New Name: `);
+//   taskNewName = e.currentTarget.dataset.text;
+//   document.getElementById("");
+//   //   const taskNameRef = document.getElementById("taskNameText");
+//   //   taskNameRef.innerHTML = `${taskNewName}`;
+// }
+
+// function moveFriend(taskIndex, isMovingUp) {
+//   // let friendIndex;
+//   let taskNewIndex;
+//   if (isMovingUp) {
+//     taskNewIndex = taskIndex - 1;
+//   } else {
+//     taskNewIndex = taskIndex + 1;
+//   }
+//   const taskName = allTasks[taskIndex].name;
+//   allTasks.splice(taskIndex, 1);
+//   allTasks.splice(taskNewIndex, 0, { name: taskName });
+//   showTasks();
+// }
 
 tasksContent();

@@ -9,7 +9,11 @@
   <body>
     <h1>Personal Task Manager</h1>
     <section id="loginPage"></section>
-    <section id="tasksPage"></section>
+    <section id="tasksPage" style="display: none">
+      <div class="dashboard" id="dashboard"></div>
+      <button onclick="addTask()">Add Task</button>
+      <div class="taskList" id="taskList"></div>
+    </section>
     <style>
       * {
         margin: 0;
@@ -48,6 +52,8 @@
       }
 
       .dashboard {
+        padding: 0 12px;
+
         display: flex;
         align-items: center;
         justify-content: space-between;
@@ -62,8 +68,8 @@
       }
 
       button {
-        margin-top: 8px;
         padding: 6px;
+        margin: 12px;
         background-color: #4f414f;
         color: white;
         font-size: 16px;
