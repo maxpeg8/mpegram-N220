@@ -71,8 +71,9 @@ function logout() {
 function addTask() {
   const newTasksPrompt = prompt(`New Task:`);
   //   console.log(newTasksPrompt);
-  tasksPageRef.innerHTML += `<div class="task">
-  ${newTasksPrompt} (<h id="categoryText">Choose Priority</h>) </br>
+  tasksPageRef.innerHTML += `<div class="task"> <h class="taskTitle" onclick="markDone()">
+  ${newTasksPrompt} (<h id="categoryText">Choose Priority</h>)</h>  
+  </br>
   <button class="red" onclick="removeTask()">Remove</button>
   <button class="blue" onclick="changeText()">Change Text</button>
   <select id="chooseCategory" onchange="changeCategory()">
@@ -90,6 +91,15 @@ function changeCategory() {
   const categoryTextRef = document.getElementById("categoryText");
   categoryTextRef.innerHTML = categoryValue;
   //   console.log(categoryTextRef);
+}
+
+function markDone() {
+  document.getElementById("taskTitle").style.textDecoration = "line-through";
+  //   const taskTitle = document.getElementById;
+  //   ("taskTitle");
+  //   taskTitle.addEventListener("click", function () {
+  //     taskTitle.style.textDecoration = "line-through";
+  //   });
 }
 
 tasksContent();
