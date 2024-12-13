@@ -10,4 +10,4 @@
 
 ## N220 Repo - Final Project
 
-This is my Final Project folder with my Final Prokect work
+This is my Final Project folder with my Final Project work
