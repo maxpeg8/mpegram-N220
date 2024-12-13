@@ -5,6 +5,9 @@ let myUsername = [];
 const loginPageRef = document.getElementById("loginPage");
 const tasksPageRef = document.getElementById("tasksPage");
 
+const dashboardRef = document.getElementById("dashboard");
+const tasklistRef = document.getElementById("tasklist");
+
 function loginContent() {
   loginPageRef.innerHTML = `<div>
   <label for="username">Username: </label>
@@ -15,7 +18,7 @@ function loginContent() {
   <input type="password" id="password" name="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number, one uppercase letter, and at least 8 characters" required />
   </div>
   <button onclick="login()">Login</button>`;
-  tasksPageRef.innerHTML = "";
+  tasksPageRef.style.display = "none";
 }
 
 function login() {
@@ -38,103 +41,99 @@ function login() {
   }
   let number1 = /[0-9]/g;
   if (passwordValue.match(number1)) {
-    myUsername.push(usernameValue);
+    myUsername.push({ name: usernameValue });
     tasksContent();
   } else {
     alert("Password must contain at least 1 number");
   }
-  //   console.log(usernameValue);
-  //   console.log(passwordValue);
-  //   console.log(myUsername);
+  console.log(usernameValue);
+  console.log(passwordValue);
+  console.log(myUsername);
   //   usernameInputRef.value = "";
   //   passwordInputRef.value = "";
 }
 
-// loginContent();
-
-const dashboardRef = document.getElementById("dashboard");
-const tasklistRef = document.getElementById("tasklist");
+loginContent();
 
 function tasksContent(usernameValue) {
-  tasksPageRef.style.display = "initial";
-
-  dashboardRef.innerHTML = `
-        Welcome, ${myUsername}
+  dashboardRef.innerHTML += `
+        Welcome, ${myUsername[myUsername.length]}
         <button class="out" onclick="logout()">Logout</button>
         `;
-
   tasksPageRef.innerHTML += `
       <div id="taskList"></div>
       `;
   loginPageRef.innerHTML = "";
+  tasksPageRef.style.display = "block";
 }
 
-// function tasksContent() {
-//   tasksPageRef.style.display = "grid";
-// }
-
-function logout() {
-  myUsername.splice(0, myUsername.length);
+function logout(userName) {
+  let userIndex;
+  for (let i = 0; i < myUsername.length; i++) {
+    if (myUsername[i].usernameValue === userName) {
+      userIndex = i;
+    }
+  }
+  myUsername.splice(myUsername, 1);
   loginContent();
-  //   console.log(myUsername);
+  console.log(myUsername);
 }
 
-// const allTasks = [];
-
-// function addTask() {
-//   const newTasks = prompt(`New Task:`);
-//   // const newTasksInputRef = document.getElementById("taskTitle");
-//   // const newTasksValue = newTasksInputRef.value;
-//   newTasksText
-//   console.log(newTasks);
-//   //   tasksPageRef.innerHTML += "";
-//   //   console.log(newTasksRef);
-//   allTasks.push({ name: newTasks });
-//   // console.log(allTasks[1]);
-//   showTasks();
-// }
+const allTasks = [];
 
 function addTask() {
   const newTasks = prompt(`New Task:`);
-  const newTaskDiv = document.createElement("div");
-  newTaskDiv.classList.add("task");
-  newTaskDiv.innerHTML = newTasks;
+  // const newTasksInputRef = document.getElementById("taskTitle");
+  // const newTasksValue = newTasksInputRef.value;
+  console.log(newTasks);
+  //   tasksPageRef.innerHTML += "";
+  //   console.log(newTasksRef);
+  allTasks.push({ name: newTasks });
+  // console.log(allTasks[1]);
+  showTasks();
 }
 
-// function removeTask(taskName) {
-//   let taskIndex;
-//   for (let i = 0; i < allTasks.length; i++) {
-//     if (allTasks[i].name === taskName) {
-//       taskIndex = i;
-//     }
-//   }
-
-//   allTasks.splice(taskIndex, 1);
-//   showTasks();
+// function addTask() {
+//   const newTasks = prompt(`New Task:`);
+//   const newTaskDiv = document.createElement("div");
+//   newTaskDiv.classList.add("task");
+//   newTaskDiv.innerHTML = newTasks;
 // }
 
-// function showTasks() {
-//   const taskListRef = document.getElementById("taskList");
-//   taskListRef.innerHTML = "";
-//   allTasks.forEach(function (task, taskIndex) {
-//     taskListRef.innerHTML += `<div class="task"> <h id="taskTitle" onclick="markDone(${taskIndex})"> <h id="taskNameText">${task.name}</h> (<h id="categoryText">Choose Category</h>)</h>
-//         </br>
-//         <button class="red" onclick="removeTask(${taskIndex})">Remove</button>
-//         <button class="blue" id=" onclick="textChange(${taskIndex})">Change Text</button>
-//         <select id="chooseCategory" onchange="changeCategory(${taskIndex})">
-//           <option>Choose Category</option>
-//           <option>Important</option>
-//           <option>When Free</option>
-//           </select>
-//         </div>
-//         `;
-//   });
-//   //   tasksPageRef.innerHTML += "";
-//   //   console.log(newTasksRef);
+function removeTask(taskName) {
+  let taskIndex;
+  for (let i = 0; i < allTasks.length; i++) {
+    if (allTasks[i].name === taskName) {
+      taskIndex = i;
+    }
+  }
 
-//   // console.log(allTasks);
-//   // console.log(taskNameText);
-// }
+  allTasks.splice(taskIndex, 1);
+  showTasks();
+}
+
+function showTasks() {
+  const taskListRef = document.getElementById("taskList");
+  taskListRef.innerHTML = "";
+  allTasks.forEach(function (task, taskIndex) {
+    taskListRef.innerHTML += `<div class="task"> <h id="taskTitle" onclick="markDone(${taskIndex})"> <h id="taskNameText">${task.name}</h> (<h id="categoryText">Choose Category</h>)</h>
+        </br>
+        <button class="red" onclick="removeTask(${taskIndex})">Remove</button>
+        <button class="blue" id=" onclick="textChange(${taskIndex})">Change Text</button>
+        <select id="chooseCategory" onchange="changeCategory(${taskIndex})">
+          <option>Choose Category</option>
+          <option>Important</option>
+          <option>When Free</option>
+          </select>
+        </div>
+        `;
+  });
+  //   tasksPageRef.innerHTML += "";
+  //   console.log(newTasksRef);
+
+  // console.log(allTasks);
+  // console.log(taskNameText);
+}
 
 // function changeCategory() {
 //   const category = document.getElementById("chooseCategory");
@@ -153,21 +152,20 @@ function addTask() {
 //   }
 // }
 
-// function markDone(taskIndex) {
-//   const taskTitleRef = document.getElementById("taskTitle");
-//   if (taskTitleRef.style.textDecoration === "line-through") {
-//     taskTitleRef.style.textDecoration = "none";
-//   }
-// else {
-//   taskTitleRef.style.textDecoration = "line-through";
-// }
-// const taskName = allTasks[taskIndex].name;
-// console.log(taskName + " hi");
+function markDone(taskIndex) {
+  const taskTitleRef = document.getElementById("taskTitle");
+  if (taskTitleRef.style.textDecoration === "line-through") {
+    taskTitleRef.style.textDecoration = "none";
+  } else {
+    taskTitleRef.style.textDecoration = "line-through";
+  }
+  const taskName = allTasks[taskIndex].name;
+  console.log(taskName + " hi");
 
-// allTasks.splice(taskIndex, 1, {
-//   name: (taskName.style.textDecoration = "line-through"),
-// });
-// }
+  allTasks.splice(taskIndex, 1, {
+    name: taskName,
+  });
+}
 
 // function textChange(e) {
 //   const taskNewName = prompt(`New Name: `);
@@ -191,4 +189,5 @@ function addTask() {
 //   showTasks();
 // }
 
-tasksContent();
+// loginContent();
+// tasksContent();
