@@ -8,11 +8,44 @@
   </head>
   <body>
     <h1>Personal Task Manager</h1>
-    <section id="loginPage"></section>
-    <section id="tasksPage">
-      <div class="dashboard" id="dashboard"></div>
+    <section id="loginPage">
+      <div>
+        <label for="username">Username: </label>
+        <input type="text" name="username" id="username" />
+      </div>
+      <div>
+        <label for="password">Password: </label>
+        <input
+          type="password"
+          id="password"
+          name="password"
+          pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
+          title="Must contain at least one number, one uppercase letter, and at least 8 characters"
+          required
+        />
+      </div>
+      <button type="submit">Login</button>
+    </section>
+    <section id="tasksPage" class="hidden">
+      <div class="dashboard" id="dashboard">
+        Welcome, <span id="activeUser"></span>
+        <button class="out" onclick="logout()">Logout</button>
+      </div>
       <button onclick="addTask()">Add Task</button>
-      <div class="taskList" id="taskList"></div>
+      <div class="taskList" id="taskList">
+        <div class="task"> <h id="taskTitle" onclick="markDone()"> 
+          <h id="taskNameText"></h> 
+          (<h id="categoryText">Choose Category</h>)</h>
+        </br>
+        <button class="red" onclick="removeTask()">Remove</button>
+        <button class="blue" onclick="textChange()">Change Text</button>
+        <select id="chooseCategory" onchange="changeCategory()">
+          <option>Choose Category</option>
+          <option>Important</option>
+          <option>When Free</option>
+          </select>
+        </div>
+      </div>
     </section>
     <style>
       * {
@@ -57,6 +90,10 @@
         display: flex;
         align-items: center;
         justify-content: space-between;
+      }
+
+      .hidden {
+        display: none;
       }
 
       .task {
