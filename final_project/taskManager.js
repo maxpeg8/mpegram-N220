@@ -36,14 +36,14 @@ function login() {
   }
 
   let uppercase1 = /[A-Z]/g;
-  if (!passwordValue.match(uppercase1)) {
+  if (passwordValue.match(uppercase1)) {
   } else {
     alert("Password must contain at least 1 uppercase");
     return;
   }
 
   let number1 = /[0-9]/g;
-  if (!passwordValue.match(number1)) {
+  if (passwordValue.match(number1)) {
   } else {
     alert("Password must contain at least 1 number");
     return;
@@ -72,6 +72,7 @@ function tasksContent(usernameValue) {
 
 function logout() {
   myUsername = [];
+  taskIndex = 0;
   loginContent();
   //   console.log(myUsername);
 }
@@ -79,18 +80,24 @@ function logout() {
 function addTask() {
   const newTasksPrompt = prompt("New Task:");
   //   console.log(newTasksPrompt);
-  tasksPageRef.innerHTML += `<div class="task"> <h id="taskTitle" onclick="markDone()">
-  ${newTasksPrompt} (<h id="categoryText">Choose Priority</h>)</h>  
+  const taskID = giveTasksID();
+  tasksPageRef.innerHTML += `<div class="task" id="task-${taskID}"> <h id="taskTitle" onclick="markDone(${taskID})">
+  ${newTasksPrompt} (<h id="categoryText-${taskID}">Choose Priority</h>)</h>  
   </br>
-  <button class="red" onclick="removeTask()">Remove</button>
-  <button class="blue" onclick="textChange()">Change Text</button>
-  <select id="chooseCategory" onchange="changeCategory()">
-    <option>Choose Category</option>
+  <button class="red" onclick="removeTask(${taskID})">Remove</button>
+  <button class="blue" onclick="textChange(${taskID})">Change Text</button>
+  <select id="chooseCategory-${taskID}" onchange="changeCategory(${taskID})">
+    <option>Choose Priority</option>
     <option>Important</option>
     <option>When Free</option>
     </select>
   </div>
   `;
+}
+
+function giveTasksID() {
+  taskIndex += 1;
+  return taskIndex;
 }
 
 function changeCategory() {
