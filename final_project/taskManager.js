@@ -1,130 +1,96 @@
 console.log("hi");
 
-let aUser = [{ name: "userA", pass: "passwordA" }];
+let myUsername = [];
+let taskIndex = 0;
 
-let thisUser = null;
-
-// const loginPageRef = document.getElementById("loginPage");
+const loginPageRef = document.getElementById("loginPage");
 const tasksPageRef = document.getElementById("tasksPage");
 
-const dashboardRef = document.getElementById("dashboard");
-const tasklistRef = document.getElementById("tasklist");
+function loginContent() {
+  loginPageRef.innerHTML = `<div>
+  <label for="username">Username: </label>
+  <input type="text" name="username" id="username" />
+  </div>
+  <div>
+  <label for="password">Password: </label>
+  <input type="password" id="password" name="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number, one uppercase letter, and at least 8 characters" required />
+  </div>
+  <button onclick="login()">Login</button>`;
+  tasksPageRef.innerHTML = "";
+}
 
-const activeUserRef = document.getElementById("activeUser");
+function login() {
+  const usernameInputRef = document.getElementById("username");
+  const passwordInputRef = document.getElementById("password");
 
-// function loginContent() {}
+  const usernameValue = usernameInputRef.value;
+  if (usernameValue.length < 1) {
+    alert("You must fill in a username");
+  }
 
-document
-  .getElementById("loginPage")
-  .addEventListener("submit", function (event) {
-    event.preventDefault();
-    const usernameInputRef = document.getElementById("username");
-    const passwordInputRef = document.getElementById("password");
-    const usernameValue = usernameInputRef.value;
-    if (usernameValue.length < 1) {
-      alert("You must fill in a username");
-    }
-    const passwordValue = passwordInputRef.value;
-    if (passwordValue.length < 1) {
-      alert("You must fill in a password");
-    } else if (passwordValue.length < 8) {
-      alert("Password must be at least 8 characters");
-    }
-    let uppercase1 = /[A-Z]/g;
-    if (passwordValue.match(uppercase1)) {
-    } else {
-      alert("Password must contain at least 1 uppercase");
-    }
-    let number1 = /[0-9]/g;
-    if (passwordValue.match(number1)) {
-      const theUser = aUser.find(
-        (theUser) => theUser.usernameValue === usernameValue
-      );
-      thisUser = theUser;
-      // aUser.push({ name: usernameValue, pass: passwordValue });
-      // const theUser = aUser.find(
-      //   (theUser) => theUser.usernameValue === usernameValue
-      // );
-      tasksContent();
-    } else {
-      alert("Password must contain at least 1 number");
-    }
+  const passwordValue = passwordInputRef.value;
+  if (passwordValue.length < 1) {
+    alert("You must fill in a password");
+  } else if (passwordValue.length < 8) {
+    alert("Password must be at least 8 characters");
+  }
 
-    console.log(usernameValue);
-    console.log(passwordValue);
-    console.log(thisUser);
-    //   usernameInputRef.value = "";
-    //   passwordInputRef.value = "";
-  });
+  let uppercase1 = /[A-Z]/g;
+  if (!passwordValue.match(uppercase1)) {
+  } else {
+    alert("Password must contain at least 1 uppercase");
+    return;
+  }
+
+  let number1 = /[0-9]/g;
+  if (!passwordValue.match(number1)) {
+  } else {
+    alert("Password must contain at least 1 number");
+    return;
+  }
+
+  myUsername.push(usernameValue);
+  tasksContent(usernameValue);
+  //   console.log(usernameValue);
+  //   console.log(passwordValue);
+  //   console.log(myUsername);
+  //   usernameInputRef.value = "";
+  //   passwordInputRef.value = "";
+}
 
 // loginContent();
 
-function tasksContent() {
-  document.getElementById("loginPage").classList.add("hidden");
-  document.getElementById("tasksPage").classList.remove("hidden");
-  showTasks();
+function tasksContent(usernameValue) {
+  tasksPageRef.innerHTML = `<div class="dashboard">
+        Welcome, ${myUsername[0]}
+        <button class="out" onclick="logout()">Logout</button>
+      </div>
+      <button onclick="addTask()">Add Task</button>
+      `;
+  loginPageRef.innerHTML = "";
 }
 
-function logout(userName) {
-  thisUser = null;
-  // loginContent();
-  console.log(thisUser);
+function logout() {
+  myUsername = [];
+  loginContent();
+  //   console.log(myUsername);
 }
-
-const allTasks = [];
 
 function addTask() {
-  const newTasks = prompt(`New Task:`);
-  // const newTasksInputRef = document.getElementById("taskTitle");
-  // const newTasksValue = newTasksInputRef.value;
-  console.log(newTasks);
-  //   tasksPageRef.innerHTML += "";
-  //   console.log(newTasksRef);
-  allTasks.push({ name: newTasks });
-  // console.log(allTasks[1]);
-  showTasks();
-}
-
-// function addTask() {
-//   const newTasks = prompt(`New Task:`);
-//   const newTaskDiv = document.createElement("div");
-//   newTaskDiv.classList.add("task");
-//   newTaskDiv.innerHTML = newTasks;
-// }
-
-function removeTask(taskName) {
-  let taskIndex;
-  for (let i = 0; i < allTasks.length; i++) {
-    if (allTasks[i].name === taskName) {
-      taskIndex = i;
-    }
-  }
-
-  allTasks.splice(taskIndex, 1);
-  showTasks();
-}
-
-function showTasks() {
-  const taskListRef = document.getElementById("taskList");
-  taskListRef.innerHTML = "";
-  allTasks.forEach(function (task, taskIndex) {
-    // taskListRef.innerHTML += `<div class="task"> <h id="taskTitle" onclick="markDone(${taskIndex})"> <h id="taskNameText">${task.name}</h> (<h id="categoryText">Choose Category</h>)</h>
-    //     </br>
-    //     <button class="red" onclick="removeTask(${taskIndex})">Remove</button>
-    //     <button class="blue" id=" onclick="textChange(${taskIndex})">Change Text</button>
-    //     <select id="chooseCategory" onchange="changeCategory(${taskIndex})">
-    //       <option>Choose Category</option>
-    //       <option>Important</option>
-    //       <option>When Free</option>
-    //       </select>
-    //     </div>
-    //     `;
-  });
-  //   tasksPageRef.innerHTML += "";
-  //   console.log(newTasksRef);
-
-  // console.log(allTasks);
-  // console.log(taskNameText);
+  const newTasksPrompt = prompt("New Task:");
+  //   console.log(newTasksPrompt);
+  tasksPageRef.innerHTML += `<div class="task"> <h id="taskTitle" onclick="markDone()">
+  ${newTasksPrompt} (<h id="categoryText">Choose Priority</h>)</h>  
+  </br>
+  <button class="red" onclick="removeTask()">Remove</button>
+  <button class="blue" onclick="textChange()">Change Text</button>
+  <select id="chooseCategory" onchange="changeCategory()">
+    <option>Choose Category</option>
+    <option>Important</option>
+    <option>When Free</option>
+    </select>
+  </div>
+  `;
 }
 
 function changeCategory() {
@@ -144,42 +110,9 @@ function markDone() {
   }
 }
 
-// function markDone(taskIndex) {
-//   const taskTitleRef = document.getElementById("taskTitle");
-//   if (taskTitleRef.style.textDecoration === "line-through") {
-//     taskTitleRef.style.textDecoration = "none";
-//   } else {
-//     taskTitleRef.style.textDecoration = "line-through";
-//   }
-//   const taskName = allTasks[taskIndex].name;
-//   console.log(taskName + " hi");
-
-//   allTasks.splice(taskIndex, 1, {
-//     name: taskName,
-//   });
-// }
-
-function textChange(e) {
+function textChange() {
   const taskNewName = prompt(`New Name: `);
-  taskNewName = e.currentTarget.dataset.text;
-  document.getElementById("");
-  //   const taskNameRef = document.getElementById("taskNameText");
-  //   taskNameRef.innerHTML = `${taskNewName}`;
+  const taskTitleRef = document.getElementById("taskTitle");
+  taskTitleRef.innerHTML = `${taskNewName} (<h id="categoryText">Choose Priority</h>)`;
 }
-
-// function moveFriend(taskIndex, isMovingUp) {
-//   // let friendIndex;
-//   let taskNewIndex;
-//   if (isMovingUp) {
-//     taskNewIndex = taskIndex - 1;
-//   } else {
-//     taskNewIndex = taskIndex + 1;
-//   }
-//   const taskName = allTasks[taskIndex].name;
-//   allTasks.splice(taskIndex, 1);
-//   allTasks.splice(taskNewIndex, 0, { name: taskName });
-//   showTasks();
-// }
-
-// loginContent();
-// tasksContent();
+tasksContent();
