@@ -100,8 +100,8 @@ function giveTasksID() {
   return taskIndex;
 }
 
-function removeTask() {
-  const taskRef = document.getElementById(`task-${taskId}`);
+function removeTask(taskID) {
+  const taskRef = document.getElementById(`task-${taskID}`);
   taskRef.remove();
 }
 
