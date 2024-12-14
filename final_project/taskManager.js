@@ -81,7 +81,7 @@ function addTask() {
   const newTasksPrompt = prompt("New Task:");
   //   console.log(newTasksPrompt);
   const taskId = giveTasksId();
-  tasksPageRef.innerHTML += `<div class="task" id="task-${taskId}"> <h id="taskTitle" onclick="markDone(${taskId})">
+  tasksPageRef.innerHTML += `<div class="task" id="task-${taskId}"> <h id="taskTitle-${taskId}" onclick="markDone(${taskId})">
   ${newTasksPrompt} (<h id="categoryText-${taskId}">Choose Priority</h>)</h>  
   </br>
   <button class="red" onclick="removeTask(${taskId})">Remove</button>
@@ -101,8 +101,8 @@ function giveTasksId() {
 }
 
 function removeTask(taskId) {
-  const taskRef = document.getElementById(`task-${taskId}`);
-  taskRef.remove();
+  const removeTaskRef = document.getElementById(`task-${taskId}`);
+  removeTaskRef.remove();
 }
 
 function changeCategory(taskId) {
