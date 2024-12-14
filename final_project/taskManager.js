@@ -80,13 +80,13 @@ function logout() {
 function addTask() {
   const newTasksPrompt = prompt("New Task:");
   //   console.log(newTasksPrompt);
-  const taskID = giveTasksID();
-  tasksPageRef.innerHTML += `<div class="task" id="task-${taskID}"> <h id="taskTitle" onclick="markDone(${taskID})">
-  ${newTasksPrompt} (<h id="categoryText-${taskID}">Choose Priority</h>)</h>  
+  const taskId = giveTasksId();
+  tasksPageRef.innerHTML += `<div class="task" id="task-${taskId}"> <h id="taskTitle" onclick="markDone(${taskId})">
+  ${newTasksPrompt} (<h id="categoryText-${taskId}">Choose Priority</h>)</h>  
   </br>
-  <button class="red" onclick="removeTask(${taskID})">Remove</button>
-  <button class="blue" onclick="textChange(${taskID})">Change Text</button>
-  <select id="chooseCategory-${taskID}" onchange="changeCategory(${taskID})">
+  <button class="red" onclick="removeTask(${taskId})">Remove</button>
+  <button class="blue" onclick="textChange(${taskId})">Change Text</button>
+  <select id="chooseCategory-${taskId}" onchange="changeCategory(${taskId})">
     <option>Choose Priority</option>
     <option>Important</option>
     <option>When Free</option>
@@ -95,26 +95,26 @@ function addTask() {
   `;
 }
 
-function giveTasksID() {
+function giveTasksId() {
   taskIndex += 1;
   return taskIndex;
 }
 
-function removeTask(taskID) {
-  const taskRef = document.getElementById(`task-${taskID}`);
+function removeTask(taskId) {
+  const taskRef = document.getElementById(`task-${taskId}`);
   taskRef.remove();
 }
 
-function changeCategory(taskID) {
-  const category = document.getElementById(`chooseCategory-${taskID}`);
+function changeCategory(taskId) {
+  const category = document.getElementById(`chooseCategory-${taskId}`);
   const categoryValue = category.value;
-  const categoryTextRef = document.getElementById(`categoryText-${taskID}`);
+  const categoryTextRef = document.getElementById(`categoryText-${taskId}`);
   categoryTextRef.innerHTML = categoryValue;
   //   console.log(categoryTextRef);
 }
 
-function markDone(taskID) {
-  const taskTitleRef = document.getElementById(`taskTitle-${taskID}`);
+function markDone(taskId) {
+  const taskTitleRef = document.getElementById(`taskTitle-${taskId}`);
   if (taskTitleRef.style.textDecoration === "line-through") {
     taskTitleRef.style.textDecoration = "none";
   } else {
@@ -122,10 +122,10 @@ function markDone(taskID) {
   }
 }
 
-function textChange(taskID) {
+function textChange(taskId) {
   const taskNewName = prompt(`New Name: `);
-  const taskTitleRef = document.getElementById(`taskTitle-${taskID}`);
-  taskTitleRef.innerHTML = `${taskNewName} (<h id="categoryText-${taskID}">Choose Priority</h>)`;
+  const taskTitleRef = document.getElementById(`taskTitle-${taskId}`);
+  taskTitleRef.innerHTML = `${taskNewName} (<h id="categoryText-${taskId}">Choose Priority</h>)`;
 }
 
 loginContent();
