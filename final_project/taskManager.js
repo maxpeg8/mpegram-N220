@@ -105,16 +105,16 @@ function removeTask(taskID) {
   taskRef.remove();
 }
 
-function changeCategory() {
-  const category = document.getElementById("chooseCategory");
+function changeCategory(taskID) {
+  const category = document.getElementById(`chooseCategory-${taskID}`);
   const categoryValue = category.value;
-  const categoryTextRef = document.getElementById("categoryText");
+  const categoryTextRef = document.getElementById(`categoryText-${taskID}`);
   categoryTextRef.innerHTML = categoryValue;
   //   console.log(categoryTextRef);
 }
 
-function markDone() {
-  const taskTitleRef = document.getElementById("taskTitle");
+function markDone(taskID) {
+  const taskTitleRef = document.getElementById(`taskTitle-${taskID}`);
   if (taskTitleRef.style.textDecoration === "line-through") {
     taskTitleRef.style.textDecoration = "none";
   } else {
@@ -122,9 +122,10 @@ function markDone() {
   }
 }
 
-function textChange() {
+function textChange(taskID) {
   const taskNewName = prompt(`New Name: `);
-  const taskTitleRef = document.getElementById("taskTitle");
-  taskTitleRef.innerHTML = `${taskNewName} (<h id="categoryText">Choose Priority</h>)`;
+  const taskTitleRef = document.getElementById(`taskTitle-${taskID}`);
+  taskTitleRef.innerHTML = `${taskNewName} (<h id="categoryText-${taskID}">Choose Priority</h>)`;
 }
+
 loginContent();
