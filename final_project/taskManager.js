@@ -1,4 +1,4 @@
-console.log("hi");
+// console.log("hi");
 
 let myUsername = [];
 let taskIndex = 0;
@@ -7,7 +7,8 @@ const loginPageRef = document.getElementById("loginPage");
 const tasksPageRef = document.getElementById("tasksPage");
 
 function loginContent() {
-  loginPageRef.innerHTML = `<div>
+  loginPageRef.innerHTML = `
+  <div>
   <label for="username">Username: </label>
   <input type="text" name="username" id="username" />
   </div>
@@ -15,7 +16,8 @@ function loginContent() {
   <label for="password">Password: </label>
   <input type="password" id="password" name="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number, one uppercase letter, and at least 8 characters" required />
   </div>
-  <button onclick="login()">Login</button>`;
+  <button onclick="login()">Login</button>
+  `;
   tasksPageRef.innerHTML = "";
 }
 
@@ -51,6 +53,7 @@ function login() {
 
   myUsername.push(usernameValue);
   tasksContent(usernameValue);
+
   //   console.log(usernameValue);
   //   console.log(passwordValue);
   //   console.log(myUsername);
@@ -61,7 +64,8 @@ function login() {
 // loginContent();
 
 function tasksContent(usernameValue) {
-  tasksPageRef.innerHTML = `<div class="dashboard">
+  tasksPageRef.innerHTML = `
+  <div class="dashboard">
         Welcome, ${myUsername[0]}
         <button class="out" onclick="logout()">Logout</button>
       </div>
@@ -74,14 +78,19 @@ function logout() {
   myUsername = [];
   taskIndex = 0;
   loginContent();
+
   //   console.log(myUsername);
 }
 
 function addTask() {
   const newTasksPrompt = prompt("New Task:");
+
   //   console.log(newTasksPrompt);
+
   const taskId = giveTasksId();
-  tasksPageRef.innerHTML += `<div class="task" id="task-${taskId}"> <h id="taskTitle-${taskId}" onclick="markDone(${taskId})">
+
+  tasksPageRef.innerHTML += `
+  <div class="task" id="task-${taskId}"> <h id="taskTitle-${taskId}" onclick="markDone(${taskId})">
   ${newTasksPrompt} (<h id="categoryText-${taskId}">Choose Priority</h>)</h>  
   </br>
   <button class="red" onclick="removeTask(${taskId})">Remove</button>
@@ -110,6 +119,7 @@ function changeCategory(taskId) {
   const categoryValue = category.value;
   const categoryTextRef = document.getElementById(`categoryText-${taskId}`);
   categoryTextRef.innerHTML = categoryValue;
+
   //   console.log(categoryTextRef);
 }
 
@@ -125,7 +135,9 @@ function markDone(taskId) {
 function textChange(taskId) {
   const taskNewName = prompt(`New Name: `);
   const taskTitleRef = document.getElementById(`taskTitle-${taskId}`);
-  taskTitleRef.innerHTML = `${taskNewName} (<h id="categoryText-${taskId}">Choose Priority</h>)`;
+  taskTitleRef.innerHTML = `
+  ${taskNewName} (<h id="categoryText-${taskId}">Choose Priority</h>)
+  `;
 }
 
 loginContent();
