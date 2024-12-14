@@ -100,6 +100,11 @@ function giveTasksID() {
   return taskIndex;
 }
 
+function removeTask() {
+  const taskRef = document.getElementById(`task-${taskId}`);
+  taskRef.remove();
+}
+
 function changeCategory() {
   const category = document.getElementById("chooseCategory");
   const categoryValue = category.value;
@@ -122,4 +127,4 @@ function textChange() {
   const taskTitleRef = document.getElementById("taskTitle");
   taskTitleRef.innerHTML = `${taskNewName} (<h id="categoryText">Choose Priority</h>)`;
 }
-tasksContent();
+loginContent();
